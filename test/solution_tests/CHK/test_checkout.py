@@ -23,3 +23,9 @@ class TestCheckout:
         assert CheckoutSolution().checkout('FF') == 20
         assert CheckoutSolution().checkout('FFFF') == 30
         assert CheckoutSolution().checkout('FFFFFF') == 40
+
+    def test_group_special_checkout(self):
+        assert CheckoutSolution().checkout('XYZ') == 45
+        # Remove higher prices first, i.e. X&Z discounts, with Y remainder
+        assert CheckoutSolution().checkout('XXYZ') == 55
+        assert CheckoutSolution().checkout('XXYYZZ') == 90

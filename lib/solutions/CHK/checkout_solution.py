@@ -73,6 +73,7 @@ class CheckoutSolution:
                 if sku in counter:
                     groups_counted.extend([sku]*counter[sku])
 
+            # Sort by highest prices to remove those first
             groups_counted.sort(key=lambda sku: CheckoutSolution.PRICING[sku], reverse=True)
 
             group_items = len(groups_counted)
