@@ -6,3 +6,9 @@ class TestCheckout:
 
     def test_free_item_checkout(self):
         assert CheckoutSolution().checkout('EEB') == 80
+
+    def test_free_item_with_discount_checkout(self):
+        assert CheckoutSolution().checkout('EEBBB') == 125
+
+    def test_free_items_no_pay_checkout(self):
+        assert CheckoutSolution().checkout('EEEEEEBB') == 240
