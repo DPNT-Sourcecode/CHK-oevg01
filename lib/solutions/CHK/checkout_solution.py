@@ -23,6 +23,13 @@ class CheckoutSolution:
                 return -1
 
         counter = Counter(skus)
+        for sku, specials in CheckoutSolution.SPECIALS:
+            for num_items, special in specials:
+                if isinstance(special, tuple) and counter[sku]>=num_items:
+                    if
+                    free_items = counter[sku]//num_items
+                    counter[sku]-=free_items
+
         total = 0
         for sku, items in counter.items():
             sku_price = CheckoutSolution.PRICING[sku]
@@ -31,12 +38,13 @@ class CheckoutSolution:
                 ordered_offers = sorted(specials.keys(), reverse=True)
                 for special_num_items, special_value in ordered_offers.items():
                     if items>=special_num_items:
-                        if special_value
-                        special_price = (items//special_num_items)*special_value
-                        items = items % special_num_items
-                        total+=special_price
+                        if not isinstance(special_value, tuple):
+                            special_price = (items//special_num_items)*special_value
+                            items = items % special_num_items
+                            total+=special_price
                 rem_price = items * sku_price
                 total += rem_price
             else:
                 total+= sku_price*items
         return total
+
