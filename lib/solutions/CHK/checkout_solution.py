@@ -71,6 +71,7 @@ class CheckoutSolution:
             groups_counted=[]
             for sku in group:
                 if sku in counter:
+                    # add full count of items to list
                     groups_counted.extend([sku]*counter[sku])
 
             # Sort by highest prices to remove those first
@@ -81,6 +82,7 @@ class CheckoutSolution:
 
             total+= num_group_specials*special_price
 
+            # Deduct sku count for all items used in group special
             items_used = num_group_specials*special_items
             for i in range(items_used):
                 sku=groups_counted[i]
@@ -125,3 +127,4 @@ class CheckoutSolution:
             else:
                 total+= sku_price*items
         return total
+
