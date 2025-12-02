@@ -10,8 +10,11 @@ class CheckoutSolution:
 
     SPECIALS = {
         'A': { 3: 130, 5: 200 },
-        'B': { 2: 45 }
+        'B': { 2: 45 },
+        'E': { 2: ('B', 1) }
     }
+
+
 
     # skus = unicode string
     def checkout(self, skus):
@@ -26,10 +29,11 @@ class CheckoutSolution:
             if sku in CheckoutSolution.SPECIALS:
                 specials = CheckoutSolution.SPECIALS[sku]
                 ordered_offers = sorted(specials.keys(), reverse=True)
-                for special in ordered_offers:
-                    if items>=special.num_items:
-                        special_price = (items//special.num_items)*special.price
-                        items = items % special.num_items
+                for special_num_items, special_value in ordered_offers.items():
+                    if items>=special_num_items:
+                        if special_value
+                        special_price = (items//special_num_items)*special_value
+                        items = items % special_num_items
                         total+=special_price
                 rem_price = items * sku_price
                 total += rem_price
