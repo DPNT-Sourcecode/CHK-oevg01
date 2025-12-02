@@ -37,8 +37,14 @@ class CheckoutSolution:
                         free_sku = special[0]
                         num_free_sku = special[1]
                         if free_sku in counter:
-                            free_items = (counter[sku]//num_items)*num_free_sku
-                            counter[free_sku]-=free_items
+                            if free_sku==sku:
+                                print(num_items)
+                                while counter[sku]>=num_items:
+                                    free_items = num_items * num_free_sku
+                                    counter[free_sku] -= free_items
+                            else:
+                                free_items = (counter[sku] // num_items) * num_free_sku
+                                counter[free_sku] -= free_items
 
         total = 0
         for sku, items in counter.items():
