@@ -66,16 +66,24 @@ class CheckoutSolution:
         for group, special in CheckoutSolution.GROUP_SPECIALS.items():
             special_items=special[0]
             special_price=special[1]
-            group_count=0
+
+            # Keep track of all items part of this group
             groups_counted=[]
             for sku in group:
                 if sku in counter:
-                    group_count+=counter[sku]
-                    groups_counted.append(sku)
-            # remove items until less than
-            while group_count>=special_items:
-                 break
+                    groups_counted.extend([sku]*counter[sku])
 
+            groups_counted.sort(key=lambda sku: CheckoutSolution.PRICING[sku], reverse=True)
+
+            group_items = len(groups_counted)
+            num_group_specials = group_items//special_items
+
+            total+= num_group_specials*special_price
+
+            items_used = num_group_specials*special_items
+            for i in range(items_used):
+                sku=groups_counted[i]
+                counter[sku]-=1
 
         # Remove free items from specials
         for sku, specials in CheckoutSolution.SPECIALS.items():
