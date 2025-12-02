@@ -1,10 +1,5 @@
 from collections import Counter
 
-class Special:
-    def __init__(self, num_items, price):
-        self.num_items = num_items
-        self.price = price
-
 class CheckoutSolution:
     PRICING = {
         'A': 50,
@@ -14,8 +9,8 @@ class CheckoutSolution:
     }
 
     SPECIALS = {
-        'A': Special(3, 130),
-        'B': Special(2, 45)
+        'A': { 3: 130, 5: 200 },
+        'B': { 2: 45 }
     }
 
     # skus = unicode string
@@ -28,12 +23,14 @@ class CheckoutSolution:
         total = 0
         for sku, items in counter.items():
             sku_price = CheckoutSolution.PRICING[sku]
-            if sku in CheckoutSolution.SPECIALS and items>=CheckoutSolution.SPECIALS[sku].num_items:
+            if sku in CheckoutSolution.SPECIALS:
                 special = CheckoutSolution.SPECIALS[sku]
+                ordered_offers = 
+                if items>=CheckoutSolution.SPECIALS[sku].num_items:
+
                 special_price = (items//special.num_items)*special.price
                 rem_price = (items % special.num_items)*sku_price
                 total+=special_price+rem_price
             else:
                 total+= sku_price*items
         return total
-
