@@ -44,8 +44,8 @@ class CheckoutSolution:
             sku_price = CheckoutSolution.PRICING[sku]
             if sku in CheckoutSolution.SPECIALS:
                 specials = CheckoutSolution.SPECIALS[sku]
-                ordered_offers = sorted(specials.keys(), reverse=True)
-                for special_num_items, special_value in ordered_offers.items():
+                ordered_offers = sorted(specials.items(), reverse=True)
+                for special_num_items, special_value in ordered_offers:
                     if items>=special_num_items and not isinstance(special_value, tuple):
                         special_price = (items//special_num_items)*special_value
                         items = items % special_num_items
