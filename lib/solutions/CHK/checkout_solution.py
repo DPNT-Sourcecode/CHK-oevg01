@@ -40,10 +40,9 @@ class CheckoutSolution:
                             free_items = 0
                             if free_sku==sku:
                                 tmp_count = counter[free_sku]
-                                while tmp_count >= num_items:
+                                while tmp_count > num_items:
                                     tmp_count-=num_items+num_free_sku
                                     free_items+=num_free_sku
-                                print(free_items)
                             else:
                                 free_items = (counter[sku] // num_items) * num_free_sku
                             counter[free_sku] -= free_items

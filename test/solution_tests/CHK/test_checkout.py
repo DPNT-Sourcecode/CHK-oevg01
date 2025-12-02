@@ -20,6 +20,6 @@ class TestCheckout:
         assert CheckoutSolution().checkout('EEEEEEBB') == 240
 
     def test_same_free_item_checkout(self):
-        assert CheckoutSolution().checkout('FF') == 10
-        assert CheckoutSolution().checkout('FFFF') == 20
+        assert CheckoutSolution().checkout('FF') == 20
+        assert CheckoutSolution().checkout('FFFF') == 30
         assert CheckoutSolution().checkout('FFFFFF') == 40
