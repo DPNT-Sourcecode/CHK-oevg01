@@ -72,8 +72,9 @@ class CheckoutSolution:
                 if sku in counter:
                     group_count+=counter[sku]
                     groups_counted.append(sku)
+            # remove items until less than
             while group_count>=special_items:
-
+                 break
 
 
         # Remove free items from specials
@@ -115,4 +116,5 @@ class CheckoutSolution:
             else:
                 total+= sku_price*items
         return total
+
 
