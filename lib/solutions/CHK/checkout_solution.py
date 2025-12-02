@@ -15,7 +15,7 @@ class CheckoutSolution:
 
     SPECIALS = {
         'A': Special(3, 130),
-        'B': Special(3, 130)
+        'B': Special(2, 45)
     }
 
     # skus = unicode string
@@ -36,3 +36,4 @@ class CheckoutSolution:
             else:
                 total+= sku_price*items
         return total
+
