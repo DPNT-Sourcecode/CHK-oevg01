@@ -47,7 +47,7 @@ class CheckoutSolution:
     }
 
     GROUP_SPECIALS = {
-        ('S','T','X','Y','Z')
+        ('S','T','X','Y','Z'): (3, 45)
     }
 
     # skus = unicode string
@@ -63,14 +63,17 @@ class CheckoutSolution:
         counter = Counter(skus)
 
         # Count total for group specials. Sum special offers and remove from items
-        for special_price, group in CheckoutSolution.GROUP_SPECIALS.items():
+        for group, special in CheckoutSolution.GROUP_SPECIALS.items():
+            special_items=special[0]
+            special_price=special[1]
             group_count=0
             groups_counted=[]
             for sku in group:
                 if sku in counter:
                     group_count+=counter[sku]
                     groups_counted.append(sku)
-                    while group_count>
+            while group_count>=special_items:
+
 
 
         # Remove free items from specials
@@ -112,3 +115,4 @@ class CheckoutSolution:
             else:
                 total+= sku_price*items
         return total
+
