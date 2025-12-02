@@ -23,4 +23,4 @@ class TestCheckout:
         assert CheckoutSolution().checkout('FF') == 10
 
     def test_same_free_items_checkout(self):
-        assert CheckoutSolution().checkout('FFF') == 20
+        assert CheckoutSolution().checkout('FFFFFF') == 30
