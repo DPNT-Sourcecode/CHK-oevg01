@@ -46,6 +46,10 @@ class CheckoutSolution:
         'V': { 2: 90, 3: 130}
     }
 
+    GROUP_SPECIALS = {
+        ('S','T','X','Y','Z')
+    }
+
     # skus = unicode string
     def checkout(self, skus):
         if skus=="":
@@ -55,7 +59,21 @@ class CheckoutSolution:
             if sku not in CheckoutSolution.PRICING:
                 return -1
 
+        total = 0
         counter = Counter(skus)
+
+        # Count total for group specials. Sum special offers and remove from items
+        for special_price, group in CheckoutSolution.GROUP_SPECIALS.items():
+            group_count=0
+            groups_counted=[]
+            for sku in group:
+                if sku in counter:
+                    group_count+=counter[sku]
+                    groups_counted.append(sku)
+                    while group_count>
+
+
+        # Remove free items from specials
         for sku, specials in CheckoutSolution.SPECIALS.items():
             ordered_offers = sorted(specials.items(), reverse=True)
             for num_items, special in ordered_offers:
@@ -75,7 +93,7 @@ class CheckoutSolution:
                                 free_items = (counter[sku] // num_items) * num_free_sku
                             counter[free_sku] -= free_items
 
-        total = 0
+        # Sum total items with discounts if applicable
         for sku, items in counter.items():
             # skip neg or 0 item counts - indicates free sku
             if items<1:
