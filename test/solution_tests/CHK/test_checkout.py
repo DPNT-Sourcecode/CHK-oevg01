@@ -29,3 +29,8 @@ class TestCheckout:
         # Remove higher prices first, i.e. Z&Y discounts, with X remainder
         assert CheckoutSolution().checkout('ZZYX') == 62
         assert CheckoutSolution().checkout('XXYYZZ') == 90
+
+    def test_discount_checkout(self):
+        assert CheckoutSolution().checkout('KK') == 120
+        assert CheckoutSolution().checkout('KKK') == 190
+        assert CheckoutSolution().checkout('KKKK') == 240
