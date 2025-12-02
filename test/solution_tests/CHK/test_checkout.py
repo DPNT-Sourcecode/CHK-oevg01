@@ -26,6 +26,6 @@ class TestCheckout:
 
     def test_group_special_checkout(self):
         assert CheckoutSolution().checkout('XYZ') == 45
-        # Remove higher prices first, i.e. X&Z discounts, with Y remainder
-        assert CheckoutSolution().checkout('XXYZ') == 55
+        # Remove higher prices first, i.e. Z&Y discounts, with X remainder
+        assert CheckoutSolution().checkout('ZZYX') == 55
         assert CheckoutSolution().checkout('XXYYZZ') == 90
