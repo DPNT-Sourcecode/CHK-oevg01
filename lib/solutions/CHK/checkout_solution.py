@@ -6,14 +6,16 @@ class CheckoutSolution:
         'B': 30,
         'C': 20,
         'D': 15,
-        'E': 40
+        'E': 40,
+        'F': 10
     }
 
 
     SPECIALS = {
         'A': { 3: 130, 5: 200 },
         'B': { 2: 45 },
-        'E': { 2: ('B', 1) }
+        'E': { 2: ('B', 1) },
+        'F': { 2: ('F', 1)}
     }
 
     # skus = unicode string
@@ -27,7 +29,8 @@ class CheckoutSolution:
 
         counter = Counter(skus)
         for sku, specials in CheckoutSolution.SPECIALS.items():
-            for num_items, special in specials.items():
+            ordered_offers = sorted(specials.items(), reverse=True)
+            for num_items, special in ordered_offers:
                 # Check if count of items matches free item special
                 if isinstance(special, tuple):
                     if sku in counter and counter[sku]>=num_items:
