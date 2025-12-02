@@ -19,7 +19,7 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus):
         if skus=="":
-            return-1
+            return 0
 
         for sku in skus:
             if sku not in CheckoutSolution.PRICING:

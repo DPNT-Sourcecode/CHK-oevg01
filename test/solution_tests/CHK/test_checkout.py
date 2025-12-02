@@ -1,6 +1,12 @@
 from solutions.CHK.checkout_solution import CheckoutSolution
 
 class TestCheckout:
+    def test_missing_checkout(self):
+        assert CheckoutSolution().checkout('') == 0
+
+    def test_not_sku_checkout(self):
+        assert CheckoutSolution().checkout('F') == -1
+
     def test_simple_checkout(self):
         assert CheckoutSolution().checkout('A') == 50
 
