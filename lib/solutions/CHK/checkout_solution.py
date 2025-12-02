@@ -24,13 +24,15 @@ class CheckoutSolution:
         for sku, items in counter.items():
             sku_price = CheckoutSolution.PRICING[sku]
             if sku in CheckoutSolution.SPECIALS:
-                special = CheckoutSolution.SPECIALS[sku]
-                ordered_offers = 
-                if items>=CheckoutSolution.SPECIALS[sku].num_items:
-
-                special_price = (items//special.num_items)*special.price
-                rem_price = (items % special.num_items)*sku_price
-                total+=special_price+rem_price
+                specials = CheckoutSolution.SPECIALS[sku]
+                ordered_offers = sorted(specials.keys(), reverse=True)
+                for special in ordered_offers:
+                    if items>=special.num_items:
+                        special_price = (items//special.num_items)*special.price
+                        items = items % special.num_items
+                        total+=special_price
+                rem_price = items * sku_price
+                total += rem_price
             else:
                 total+= sku_price*items
         return total
