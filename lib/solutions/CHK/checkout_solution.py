@@ -116,5 +116,3 @@ class CheckoutSolution:
             else:
                 total+= sku_price*items
         return total
-
-
