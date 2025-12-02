@@ -15,17 +15,18 @@ class CheckoutSolution:
         'E': { 2: ('B', 1) }
     }
 
-
-
     # skus = unicode string
     def checkout(self, skus):
+        if skus=="":
+            return-1
+
         for sku in skus:
             if sku not in CheckoutSolution.PRICING:
                 return -1
 
         counter = Counter(skus)
-        for sku, specials in CheckoutSolution.SPECIALS:
-            for num_items, special in specials:
+        for sku, specials in CheckoutSolution.SPECIALS.items():
+            for num_items, special in specials.items():
                 # Check if count of items matches free item special
                 if isinstance(special, tuple):
                     if sku in counter and counter[sku]>=num_items:
@@ -54,5 +55,3 @@ class CheckoutSolution:
             else:
                 total+= sku_price*items
         return total
-
-
