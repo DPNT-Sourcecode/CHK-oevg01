@@ -5,7 +5,7 @@ class TestCheckout:
         assert CheckoutSolution().checkout('') == 0
 
     def test_not_sku_checkout(self):
-        assert CheckoutSolution().checkout('Z') == -1
+        assert CheckoutSolution().checkout('1') == -1
 
     def test_simple_checkout(self):
         assert CheckoutSolution().checkout('A') == 50
